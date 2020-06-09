@@ -12,18 +12,23 @@ class ProductProduct(models.Model):
 
     # Link rental service -> rented HW product
     rented_product_id = fields.Many2one(
-        'product.product', string='Related Rented Product',
+        'product.template', string='Related Rented Product',
         domain=[('type', 'in', ('product', 'consu'))])
     # Link rented HW product -> rental service
     rental_service_ids = fields.One2many(
         'product.product', 'rented_product_id',
         string='Rental Services')
 
-    @api.constrains('rented_product_id', 'must_have_dates', 'type', 'uom_id')
+class ProductTemplate(models.Model):
+
+    _inherit = 'product.template'
+    rental_guarantee_price = fields.Monetary(string='Rental Guarantee Price')
+
+    @api.constrains('id', 'must_have_dates', 'type', 'uom_id')
     def _check_rental(self):
-        day_uom = self.env.ref('uom.product_uom_day')
+        day_uom = self.env['uom.uom'].search([['category_id', '=', 3]])
         for product in self:
-            if product.rented_product_id:
+            if product.id:
                 if product.type != 'service':
                     raise ValidationError(_(
                         "The rental product '%s' must be of type 'Service'.")
@@ -35,12 +40,7 @@ class ProductProduct(models.Model):
                         % product.name)
                 # In the future, we would like to support all time UoMs
                 # but it is more complex and requires additionnal developments
-                if product.uom_id != day_uom:
+                if product.uom_id not in day_uom:
                     raise ValidationError(_(
                         "The unit of measure of the rental product '%s' must "
-                        "be 'Day'.") % product.name)
-
-class ProductTemplate(models.Model):
-
-    _inherit = 'product.template'
-    rental_guarantee_price = fields.Monetary(string='Rental Guarantee Price')
+                        "be Time date type.") % product.name)

@@ -580,8 +580,8 @@ msgstr ""
 #. module: sale_rental
 #: code:addons/sale_rental/models/product.py:39
 #, python-format
-msgid "The unit of measure of the rental product '%s' must be 'Day'."
-msgstr ""
+msgid "The unit of measure of the rental product '%s' must be Time date type."
+msgstr "หน่วยวัดต้องเป็นประเภทหน่วยวัดประเภท วันและเวลา เท่านั้น"
 
 #. module: sale_rental
 #: model:ir.ui.view,arch_db:sale_rental.sale_rental_form

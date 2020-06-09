@@ -33,22 +33,22 @@
             <label for="rental">Can be Rental</label>
         </xpath>
         <xpath expr="//field[@name='taxes_id']" position="before">
-            <field name="rental_guarantee_price" widget="monetary" attrs="{'invisible':[('rental','=',False)]}"/>
         </xpath>
-        <group name="sale" position="inside">
-            <group name="rental-service" string="Rental"
-                attrs="{'invisible': [('type', '!=', 'service')]}">
-                <field name="rented_product_id"/>
-            </group>
-            <group name="rental-product"
-                attrs="{'invisible': [('type', '=', 'service')]}"
-                string="Rental Services" col="1">
-                <field name="rental_service_ids" nolabel="1" attrs="{'invisible': [('rental_service_ids', '=', [])]}"/>
-                <button type="action"
-                    name="%(sale_rental.create_rental_product_action)d"
-                       string="Create Rental Service" />
-            </group>
-        </group>
+        <xpath expr="//page[2]" position='after'>
+	    	<page string='Rental'>
+                <group name="rental-service" string="Rental" col="3">
+                    <field name="rented_product_id"/>
+                    <field name="rental_guarantee_price" widget="monetary" attrs="{'invisible':[('rental','=',False)]}"/>
+                </group>
+                <group name="rental-product"
+                    string="Rental Services" col="1">
+                    <field name="rental_service_ids" nolabel="1" attrs="{'invisible': [('rental_service_ids', '=', [])]}"/>
+                    <button type="action"
+                        name="%(sale_rental.create_rental_product_action)d"
+                           string="Create Rental Service" />
+                </group>
+            </page>
+	    </xpath>
     </field>
 </record>
 
