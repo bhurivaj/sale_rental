@@ -12,7 +12,7 @@ class ProductProduct(models.Model):
 
     # Link rental service -> rented HW product
     rented_product_id = fields.Many2one(
-        'product.template', string='Related Rented Product',
+        'product.product', string='Related Rented Product',
         domain=[('type', 'in', ('product', 'consu'))])
     # Link rented HW product -> rental service
     rental_service_ids = fields.One2many(

@@ -36,6 +36,8 @@ class CreateRentalProduct(models.TransientModel):
         digits=dp.get_precision('Product Price'), default=1.0)
     categ_id = fields.Many2one(
         'product.category', string='Product Category', required=True)
+    rental = fields.Boolean(string='Can be Rent', default=True, required=True)
+    rental_guarantee_price = fields.Float(string='Rental Guarantee Price', digits=(10,2), default=0.0, required=True)
     copy_image = fields.Boolean(string='Copy Product Image')
 
     @api.model
@@ -45,6 +47,7 @@ class CreateRentalProduct(models.TransientModel):
             'type': 'service',
             'sale_ok': True,
             'purchase_ok': False,
+            'rental' : True,
             'uom_id': day_uom_id,
             'uom_po_id': day_uom_id,
             'list_price': self.sale_price_per_day,

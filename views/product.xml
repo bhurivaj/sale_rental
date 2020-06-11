@@ -8,6 +8,7 @@
 
 <odoo>
 
+<!--    product page    -->
 <record id="product_template_only_form_view" model="ir.ui.view">
     <field name="name">rental.template.product.form</field>
     <field name="model">product.template</field>
@@ -17,12 +18,17 @@
             <field name="rental" string="Can be Rental" />
             <label for="rental">Can be Rental</label>
         </xpath>
-        <xpath expr="//field[@name='taxes_id']" position="before">
-            <field name="rental_guarantee_price" widget="monetary" attrs="{'invisible':[('rental','=',False)]}"/>
+        <xpath expr="//page[2]" position='after'>
+	    	<page string='Rental'>
+                <group name="rental-service" string="Rental" col="3">
+                    <field name="rental_guarantee_price" widget="monetary" attrs="{'invisible':[('rental','=',False)]}"/>
+                </group>
+            </page>
         </xpath>
     </field>
 </record>
 
+<!--    product varient page    -->
 <record id="product_normal_form_view" model="ir.ui.view">
     <field name="name">rental.product.product.form</field>
     <field name="model">product.product</field>
@@ -32,20 +38,19 @@
             <field name="rental" string="Can be Rental"/>
             <label for="rental">Can be Rental</label>
         </xpath>
-        <xpath expr="//field[@name='taxes_id']" position="before">
-        </xpath>
+
         <xpath expr="//page[2]" position='after'>
 	    	<page string='Rental'>
                 <group name="rental-service" string="Rental" col="3">
-                    <field name="rented_product_id"/>
+                    <field name="rented_product_id" attrs="{'invisible':[('rental','=',False)]}"/>
                     <field name="rental_guarantee_price" widget="monetary" attrs="{'invisible':[('rental','=',False)]}"/>
                 </group>
                 <group name="rental-product"
                     string="Rental Services" col="1">
-                    <field name="rental_service_ids" nolabel="1" attrs="{'invisible': [('rental_service_ids', '=', [])]}"/>
+                    <field name="rental_service_ids" nolabel="1" attrs="{'invisible': [('rental_service_ids', '=', []),('rental','=',True)]}"/>
                     <button type="action"
                         name="%(sale_rental.create_rental_product_action)d"
-                           string="Create Rental Service" />
+                           string="Create Rental Service" attrs="{'invisible': [('rental_service_ids', '!=', [])]}" />
                 </group>
             </page>
 	    </xpath>

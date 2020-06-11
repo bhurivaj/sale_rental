@@ -18,8 +18,10 @@
                 <field name="hw_product_id"/>
                 <field name="name"/>
                 <field name="default_code"/>
+                <field name="rental"/>
                 <field name="categ_id"/>
                 <field name="sale_price_per_day"/>
+                <field name="rental_guarantee_price" widget="monetary"/>
                 <field name="copy_image"/>
             </group>
             <footer>
