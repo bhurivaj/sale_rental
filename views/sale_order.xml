@@ -73,7 +73,7 @@
             <field name="rental_qty" attrs="{'invisible': [('rental', '=', False)], 'required': [('rental', '=', True)]}"/>
         </xpath>
         <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">
-            <field name="rental_guarantee_price"/>
+            <field name="rental_guarantee_price" readonly="0"/>
             <field name="rental_guarantee_price_total"/>
         </xpath>
     </field>

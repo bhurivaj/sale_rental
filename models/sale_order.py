@@ -18,6 +18,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     rental_guarantee_price_total =  fields.Monetary(string='Total Rental Guarantee', store=True, readonly=True, tracking=True, compute='_compute_total')
+    num_word = fields.Char(string="Amount In Words:", compute='_compute_amount_in_word')
 
     def action_cancel(self):
         """
@@ -44,6 +45,10 @@ class SaleOrder(models.Model):
 
         self.rental_guarantee_price_total = guarantee_total
 
+    def _compute_amount_in_word(self):
+        for rec in self:
+            rec.num_word = str(rec.currency_id.amount_to_text(rec.amount_total))
+
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
@@ -61,8 +66,8 @@ class SaleOrderLine(models.Model):
         help="Indicate the number of items that will be rented.")
     sell_rental_id = fields.Many2one(
         'sale.rental', string='Rental to Sell')
-    rental_guarantee_price =  fields.Monetary(string='Rental Guarantee Price', related='product_id.rental_guarantee_price', store=True)
-    rental_guarantee_price_total =  fields.Monetary(string='Total Rental Guarantee', store=True)
+    rental_guarantee_price =  fields.Monetary(string='GTEE Price', related='product_id.rental_guarantee_price', store=True)
+    rental_guarantee_price_total =  fields.Monetary(string='Total GTEE', store=True)
 
     _sql_constraints = [(
         'rental_qty_positive',
@@ -207,7 +212,7 @@ class SaleOrderLine(models.Model):
                     self.order_id.warehouse_id.sell_rented_product_route_id})
         return vals
 
-    @api.onchange('product_id', 'rental_qty')
+    @api.onchange('product_id', 'rental_qty','rental_guarantee_price')
     def rental_product_id_change(self):
         res = {}
         if self.product_id:
@@ -291,7 +296,7 @@ class SaleOrderLine(models.Model):
         if self.sell_rental_id:
             self.product_uom_qty = self.sell_rental_id.rental_qty
 
-    @api.onchange('rental_qty', 'number_of_days', 'product_id')
+    @api.onchange('rental_qty', 'number_of_days', 'product_id' , 'rental_guarantee_price')
     def rental_qty_number_of_days_change(self):
         if self.product_id.rented_product_id:
             qty = self.rental_qty * self.number_of_days

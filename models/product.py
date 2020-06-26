@@ -28,19 +28,20 @@ class ProductTemplate(models.Model):
     def _check_rental(self):
         day_uom = self.env['uom.uom'].search([['category_id', '=', 3]])
         for product in self:
-            if product.id:
-                if product.type != 'service':
-                    raise ValidationError(_(
-                        "The rental product '%s' must be of type 'Service'.")
-                        % product.name)
-                if not product.must_have_dates:
-                    raise ValidationError(_(
-                        "The rental product '%s' must have the option "
-                        "'Must Have Start and End Dates' checked.")
-                        % product.name)
-                # In the future, we would like to support all time UoMs
-                # but it is more complex and requires additionnal developments
-                if product.uom_id not in day_uom:
-                    raise ValidationError(_(
-                        "The unit of measure of the rental product '%s' must "
-                        "be Time date type.") % product.name)
+            if product.rental == True:
+                if product.id:
+                    if product.type != 'service':
+                        raise ValidationError(_(
+                            "The rental product '%s' must be of type 'Service'.")
+                            % product.name)
+                    if not product.must_have_dates:
+                        raise ValidationError(_(
+                            "The rental product '%s' must have the option "
+                            "'Must Have Start and End Dates' checked.")
+                            % product.name)
+                    # In the future, we would like to support all time UoMs
+                    # but it is more complex and requires additionnal developments
+                    if product.uom_id not in day_uom:
+                        raise ValidationError(_(
+                            "The unit of measure of the rental product '%s' must "
+                            "be Time date type.") % product.name)

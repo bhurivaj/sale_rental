@@ -3,6 +3,21 @@
     <data>
 
         <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+            <!--    edit Title  -->
+            <xpath expr="//h2[@class='mt16']" position="replace">
+                <h2 class="mt16">
+                    <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
+                        <span t-if="doc.state not in ['draft','sent']">Order <span t-if="doc.default_start_date != 'null' and doc.default_end_date != 'null'">/ Rental</span> # </span>
+                        <span t-if="doc.state in ['draft','sent']">Quotation <span t-if="doc.default_start_date != 'null' and doc.default_end_date != 'null'">/ Rental</span> # </span>
+                    </t>
+                    <t t-if="env.context.get('proforma', False) or is_pro_forma">
+                        <span>Pro-Forma Invoice # </span>
+                    </t>
+                    <span t-field="doc.name"/>
+                </h2>
+            </xpath>
+
+            <!--    add since and to dates  -->
             <xpath expr="//table[@class='table table-sm o_main_table']" position="before">
                 <t t-set="display_rental" t-value="any([l.rental_qty for l in doc.order_line])"/>
 
@@ -17,28 +32,34 @@
                     </div>
                 </div>
             </xpath>
-            <!--        column header       -->
+
+            <!--        mod column header       -->
             <xpath expr="//th[@name='th_description']" position="after">
                 <th t-if="display_rental" name="th_duration" class="text-right">Duration</th>
             </xpath>
 
             <xpath expr="//th[@name='th_priceunit']" position="after">
-                <th t-if="display_rental" name="th_guarantee_price" class="text-right">Guarantee Price</th>
+                <th t-if="display_rental" name="th_guarantee_price" class="text-right">GTEE Price</th>
             </xpath>
 
             <xpath expr="//th[@name='th_subtotal']" position="after">
-                <th t-if="display_rental" name="th_guarantee_price_total" class="text-right">Guarantee Total</th>
+                <th t-if="display_rental" name="th_guarantee_price_total" class="text-right">GTEE Total</th>
             </xpath>
 
-            <!--        column data       -->
+            <xpath expr="//th[@name='th_taxes']" position="replace">
+                <th name="th_taxes" class="text-right" style="display:none;">Taxes</th>
+            </xpath>
+
+            <!--        mod column data       -->
             <xpath expr="//td[@name='td_quantity']" position="replace">
                 <td t-if="display_rental" name="td_duration" class="text-right">
                     <span t-field="line.number_of_days"/>
+                    <span t-if="display_rental" t-field="line.product_uom" groups="uom.group_uom"/>
                 </td>
                 <td name="td_quantity" class="text-right">
                     <span t-if="not display_rental" t-field="line.product_uom_qty"/>
                     <span t-if="display_rental" t-field="line.rental_qty"/>
-                    <span t-field="line.product_uom" groups="uom.group_uom"/>
+                    <span t-if="not display_rental" t-field="line.product_uom" groups="uom.group_uom"/>
                 </td>
             </xpath>
 
@@ -48,12 +69,19 @@
                 </td>
             </xpath>
 
+            <xpath expr="//td[@name='td_taxes']" position="replace">
+                <td name="td_taxes" class="text-right" style="display:none;">
+                    <span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_id))"/>
+                </td>
+            </xpath>
+
             <xpath expr="//td[@name='td_subtotal']" position="after">
                 <td t-if="display_rental" name="td_guarantee_price_total" class="text-right">
                     <span t-if="display_rental" t-field="line.rental_guarantee_price_total"/>
                 </td>
             </xpath>
 
+            <!-- set value of guarantee_subtotal-->
             <xpath expr="//t[@t-set='current_subtotal']" position="after">
                 <t t-set="current_guarantee_subtotal" t-value="0"/>
             </xpath>
@@ -62,21 +90,118 @@
                 <t t-set="current_guarantee_subtotal" t-value="current_guarantee_subtotal + line.rental_guarantee_price_total"/>
             </xpath>
 
-            <xpath expr="//tr[@class='border-black o_total']" position="after">
-                <tr t-if="doc.rental_guarantee_price_total > 0" class="border-black o_guarantee_total">
-                    <td name="td_guarantee_total_label"><strong>Guarantee Total</strong></td>
-                    <td name="td_guarantee_total" class="text-right">
-                        <span t-field="doc.rental_guarantee_price_total"/>
-                    </td>
-                </tr>
-                <tr t-if="doc.rental_guarantee_price_total > 0" class="border-black o_grand_total">
-                    <td name="td_grand_total_label"><strong>Grand Total</strong></td>
-                    <td name="td_grand_total" class="text-right">
-                        <strong t-esc="doc.amount_total + doc.rental_guarantee_price_total" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}" />
-                    </td>
-                </tr>
+            <!--     block for baht text and Total-->
+            <xpath expr="//div[@name='total']" position="replace">
+                <div id="total" class="row" name="total">
+                    <div class="col-6">
+                      <h4 t-field="doc.num_word"></h4>
+                    </div>
+                    <div class="col-6">
+                        <table class="table table-sm">
+                            <tr class="border-black o_subtotal" style="">
+                                <td name="td_amount_untaxed_label"><strong>Subtotal</strong></td>
+                                <td name="td_amount_untaxed" class="text-right">
+                                    <span t-field="doc.amount_untaxed"/>
+                                </td>
+                            </tr>
+                            <t t-foreach="doc.amount_by_group" t-as="amount_by_group">
+                                <tr style="">
+                                    <t t-if="amount_by_group[5] == 1 and doc.amount_untaxed == amount_by_group[2]">
+                                        <td name="td_amount_by_group_label_3">
+                                            <span t-esc="amount_by_group[0]"/>
+                                            <span>&amp;nbsp;<span>on</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/></span>
+                                        </td>
+                                        <td name="td_amount_by_group_3" class="text-right o_price_total">
+                                            <span t-esc="amount_by_group[1]"
+                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                        </td>
+                                    </t>
+                                    <t t-else ="">
+                                        <td name="td_amount_by_group_label">
+                                            <span t-esc="amount_by_group[0]"/>
+                                        </td>
+                                        <td name="td_amount_by_group" class="text-right o_price_total">
+                                            <span t-esc="amount_by_group[1]"
+                                                t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                            <tr class="border-black o_total">
+                                <td name="td_amount_total_label"><strong>Total</strong></td>
+                                <td name="td_amount_total" class="text-right">
+                                    <span t-field="doc.amount_total"/>
+                                </td>
+                            </tr>
+                            <!--     block for add guarantee -->
+                            <tr t-if="doc.rental_guarantee_price_total > 0" class="border-black o_guarantee_total">
+                                <td name="td_guarantee_total_label"><strong>Guarantee Total</strong></td>
+                                <td name="td_guarantee_total" class="text-right">
+                                    <span t-field="doc.rental_guarantee_price_total"/>
+                                </td>
+                            </tr>
+                            <tr t-if="doc.rental_guarantee_price_total > 0" class="border-black o_grand_total">
+                                <td name="td_grand_total_label"><strong>GTEE+Grand Total</strong></td>
+                                <td name="td_grand_total" class="text-right">
+                                    <strong t-esc="doc.amount_total + doc.rental_guarantee_price_total" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </xpath>
 
+<!-- restructure of signed block and note -->
+            <xpath expr="//p[@t-field='doc.note']" position="replace"/>
+            <xpath expr="//div[@name='signature']" position="replace">
+                <div class="row mt64">
+                    <div class="col-6">
+                        <p style="font-size: 8px;" t-field="doc.note" />
+                    </div>
+                    <div class="col-6">
+                        <div class="row mt8" t-if="doc.default_start_date != 'null' and doc.default_end_date != 'null'">
+                            <div class="col-12">
+                                <h4>เซ็นต์รับ-คืนค้ำประกัน</h4>
+                                <table class="table table-sm table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">วันที่</th>
+                                            <th class="text-center">ยอด</th>
+                                            <th class="text-center">เซ็นต์</th>
+                                        </tr>
+                                        <tbody>
+                                            <tr>
+                                                <td class="bg-light text-dark">รับ</td>
+                                                <td rowspan="2" class="text-right"><span t-field="doc.rental_guarantee_price_total"></span></td>
+                                                <td class="bg-light text-dark"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-dark bg-light">จ่าย</td>
+                                                <td class="text-dark bg-light"></td>
+                                            </tr>
+                                        </tbody>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <div t-if="doc.signed_by" class="mt64 ml64 mr4" name="signature">
+                            <div class="offset-3">
+                                <strong>Salesperson</strong>
+                            </div>
+                            <div class="offset-3 text-center border border-left-0 border-right-0 border-bottom-0">
+                                <p t-field="doc.user_id"/>
+                            </div>
+                            <br />
+                            <div class="offset-3">
+                                <strong>Customer</strong>
+                            </div>
+                            <div class="offset-3 text-center border border-left-0 border-right-0 border-bottom-0">
+                                <p t-field="doc.signed_by"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
 
         </template>
 

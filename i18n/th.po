@@ -115,7 +115,7 @@ msgstr "สร้างเมื่อ"
 #: model:ir.model.fields,field_description:sale_rental.field_sale_rental_partner_id
 #: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
 msgid "Customer"
-msgstr ""
+msgstr "ลูกค้า"
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_default_code
@@ -126,12 +126,12 @@ msgstr ""
 #: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
 #: model:ir.ui.view,arch_db:sale_rental.sale_rental_tree
 msgid "Delivery"
-msgstr ""
+msgstr "การจัดส่ง"
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_sale_rental_out_picking_id
 msgid "Delivery Order"
-msgstr ""
+msgstr "ใบขนส่ง"
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_display_name
@@ -142,12 +142,12 @@ msgstr "ชื่อที่ใช้แสดง"
 #. module: sale_rental
 #: model:ir.ui.view,arch_db:sale_rental.sale_rental_tree
 msgid "End Date"
-msgstr ""
+msgstr "สิ้นสุดเมื่อ"
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_sale_rental_end_date
 msgid "End Date (extensions included)"
-msgstr ""
+msgstr "สิ้นสุดเมื่อ (รวมวันที่ต่อสัญญาแล้ว)"
 
 #. module: sale_rental
 #: model:ir.model.fields,help:sale_rental.field_sale_rental_end_date
@@ -263,7 +263,7 @@ msgstr ""
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_sale_rental_out_move_id
 msgid "Outgoing Stock Move"
-msgstr ""
+msgstr "รายการเคลื่อนไหวสต๊อกขาออก"
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse_rental_view_location_id
@@ -274,7 +274,7 @@ msgstr ""
 #: model:ir.model,name:sale_rental.model_procurement_order
 #: model:ir.model.fields,field_description:sale_rental.field_sale_rental_procurement_id
 msgid "Procurement"
-msgstr ""
+msgstr "การจัดซื้อ"
 
 #. module: sale_rental
 #: model:ir.model,name:sale_rental.model_product_product
@@ -575,7 +575,7 @@ msgstr ""
 msgid ""
 "The rental product '%s' must have the option 'Must Have Start and End Dates' "
 "checked."
-msgstr ""
+msgstr "รายการสินค้าเช่าชื่อ '%s' จะต้องเลือกช่อง 'กำหนดให้มีวันเริ่มต้นและลิ้นสุดด้วย'"
 
 #. module: sale_rental
 #: code:addons/sale_rental/models/product.py:39
@@ -586,17 +586,17 @@ msgstr "หน่วยวัดต้องเป็นประเภทหน
 #. module: sale_rental
 #: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
 msgid "Total"
-msgstr ""
+msgstr "รวม"
 
 #. module: sale_rental
 #: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
 msgid "Unit of Measure"
-msgstr ""
+msgstr "หน่วยนับ"
 
 #. module: sale_rental
 #: model:ir.model,name:sale_rental.model_stock_warehouse
 msgid "Warehouse"
-msgstr ""
+msgstr "คลังสินค้า"
 
 #. module: sale_rental
 #: code:addons/sale_rental/models/sale_order.py:175
@@ -606,3 +606,26 @@ msgid ""
 "the stock location '%s' ! Make sure that you get some units back in the mean "
 "time or re-supply the stock location '%s'."
 msgstr ""
+#"คุณต้องการเช่าสินค้าจำนวน %.2f %s แต่คุณมีอยู่ในคลัง '%s' แค่ %.2f %s ! "
+#"ตรวจสอบว่าคุณได้ทำการคีย์รายการหรือนำสินค้ากลับเข้า stock บ้างแล้ว "
+#"หรือได้ทำการเติมสินค้าในคลังสินค้า  '%s' แล้ว"
+
+#. module: sale_rental
+#: model:ir.ui.view,name:	sale.order.form
+msgid "GTEE Price"
+msgstr "ราคาค้ำประกัน"
+
+#. module: sale_rental
+#: model:ir.ui.view,name:	sale.order.form
+msgid "Total GTEE"
+msgstr "ราคารวมค้ำประกัน"
+
+#. module: sale_rental
+#: model:ir.ui.view,name:	product.template.search
+msgid "Is rental"
+msgstr "เป็นสินค้าเช่า"
+
+#. module: sale_rental
+#: model:ir.ui.view,name:	product.template.search
+msgid "Is not rental"
+msgstr "ไม่ได้เป็นสินค้าเช่า"
