@@ -53,13 +53,13 @@
             <!--        mod column data       -->
             <xpath expr="//td[@name='td_quantity']" position="replace">
                 <td t-if="display_rental" name="td_duration" class="text-right">
-                    <span t-field="line.number_of_days"/>
-                    <span t-if="display_rental" t-field="line.product_uom" groups="uom.group_uom"/>
+                    <span t-if="line.rental" t-field="line.number_of_days"/>
+                    <span t-if="line.rental" t-field="line.product_uom" groups="uom.group_uom"/>
                 </td>
                 <td name="td_quantity" class="text-right">
-                    <span t-if="not display_rental" t-field="line.product_uom_qty"/>
-                    <span t-if="display_rental" t-field="line.rental_qty"/>
-                    <span t-if="not display_rental" t-field="line.product_uom" groups="uom.group_uom"/>
+                    <span t-if="not line.rental" t-field="line.product_uom_qty"/>
+                    <span t-if="line.rental" t-field="line.rental_qty"/>
+                    <span t-if="not  line.rental" t-field="line.product_uom" groups="uom.group_uom"/>
                 </td>
             </xpath>
 
@@ -159,7 +159,7 @@
                         <p style="font-size: 8px;" t-field="doc.note" />
                     </div>
                     <div class="col-6">
-                        <div class="row mt8" t-if="doc.default_start_date != 'null' and doc.default_end_date != 'null'">
+                        <div class="row mt8" t-if="doc.default_start_date != 'null' and doc.default_end_date != 'null' and doc.rental_guarantee_price_total > 0">
                             <div class="col-12">
                                 <h4>เซ็นต์รับ-คืนค้ำประกัน</h4>
                                 <table class="table table-sm table-bordered">
