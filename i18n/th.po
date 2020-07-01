@@ -330,7 +330,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
 #, python-format
 msgid "Rental"
-msgstr ""
+msgstr "การเช่า"
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse_rental_allowed
@@ -340,32 +340,32 @@ msgstr ""
 #. module: sale_rental
 #: selection:sale.order.line,rental_type:0
 msgid "Rental Extension"
-msgstr ""
+msgstr "ต่อสัญญาเช่า"
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_sale_rental_extension_order_line_ids
 #: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
 msgid "Rental Extensions"
-msgstr ""
+msgstr "ต่อสัญญาเช่าหลายรายการ"
 
 #. module: sale_rental
 #: code:addons/sale_rental/models/stock.py:123
 #: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse_rental_in_location_id
 #, python-format
 msgid "Rental In"
-msgstr ""
+msgstr "เช่า รับคืน"
 
 #. module: sale_rental
 #: code:addons/sale_rental/models/stock.py:133
 #: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse_rental_out_location_id
 #, python-format
 msgid "Rental Out"
-msgstr ""
+msgstr "เช่า ส่งมอบ"
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_sale_price_per_day
 msgid "Rental Price per Day"
-msgstr ""
+msgstr "ราคาเช่า/วัน"
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_sale_order_line_rental_qty
@@ -611,12 +611,12 @@ msgstr ""
 #"หรือได้ทำการเติมสินค้าในคลังสินค้า  '%s' แล้ว"
 
 #. module: sale_rental
-#: model:ir.ui.view,name:	sale.order.form
+#: view:sale.order.line:sale.view_order_line_tree
 msgid "GTEE Price"
 msgstr "ราคาค้ำประกัน"
 
 #. module: sale_rental
-#: model:ir.ui.view,name:	sale.order.form
+#: view:sale.order.line:sale.view_order_line_tree
 msgid "Total GTEE"
 msgstr "ราคารวมค้ำประกัน"
 

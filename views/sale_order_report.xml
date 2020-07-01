@@ -93,10 +93,11 @@
             <!--     block for baht text and Total-->
             <xpath expr="//div[@name='total']" position="replace">
                 <div id="total" class="row" name="total">
-                    <div class="col-6">
-                      <h4 t-field="doc.num_word"></h4>
+                    <div class="col-8 text-center">
+                      <h5 t-field="doc.num_word"/>
+                      <p class="subtitle">(คำอ่านภาษาไทย)</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4">
                         <table class="table table-sm">
                             <tr class="border-black o_subtotal" style="">
                                 <td name="td_amount_untaxed_label"><strong>Subtotal</strong></td>
