@@ -36,15 +36,17 @@
 
 <!--    view order form-->
 <record id="view_order_form_inherited" model="ir.ui.view">
-    <field name="name">sale.view_order_form</field>
+    <field name="name">sale_rental.view_order_form</field>
     <field name="model">sale.order</field>
     <field name="inherit_id" ref="sale.view_order_form" />
     <field name="arch" type="xml">
-        <xpath expr="//field[@name='amount_total']" position="after">
+        <xpath expr="//group[@name='note_group']" position="before">
+            <group colspan="2" name="guarantee_total">
                 <div class="oe_subtotal_footer_separator oe_inline o_td_label" attrs="{'invisible': [('rental_guarantee_price_total','=',0)]}">
                     <label for="rental_guarantee_price_total"/>
                 </div>
                 <field name="rental_guarantee_price_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}" attrs="{'invisible': [('rental_guarantee_price_total','=',0)]}"/>
+            </group>
         </xpath>
     </field>
 </record>
