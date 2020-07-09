@@ -56,6 +56,7 @@ class CreateRentalProduct(models.TransientModel):
             'rented_product_id': self.hw_product_id.id,
             'must_have_dates': True,
             'categ_id': self.categ_id.id,
+            'rental_guarantee_price': self.rental_guarantee_price,
             'invoice_policy': 'order',
         }
         if self.copy_image:
