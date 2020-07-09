@@ -5,7 +5,7 @@
 
 {
     'name': 'Sale Rental',
-    'version': '13.0.1.1.3.2',
+    'version': '13.0.1.2.0.1',
     'category': 'Sales',
     'license': 'AGPL-3',
     'summary': 'Manage Rental of Products',
@@ -21,7 +21,9 @@
         'views/sale_rental.xml',
         'wizard/create_rental_product_view.xml',
         'views/product.xml',
-        'views/sale_order_report.xml',
+        'views/account_move.xml',
+        'reports/sale_order_report.xml',
+        'reports/report_invoice.xml',
     ],
     'post_init_hook': 'add_to_group_stock_packaging',
     'demo': ['demo/rental_demo.xml'],

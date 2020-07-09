@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <template id="report_invoice_document_inherited" inherit_id="account.report_invoice_document">
+
+            <xpath expr="//table[@name='invoice_line_table']" position="before">
+                <t t-set="display_rental" t-value="any([l.rental_qty for l in o.invoice_line_ids])"/>
+            </xpath>
+
+            <!--        mod column header       -->
+            <xpath expr="//th[@name='th_quantity']" position="before">
+                <th t-if="display_rental" name="th_duration" class="text-right">Duration</th>
+            </xpath>
+
+            <!--        mod column data       -->
+            <xpath expr="//span[@t-field='line.quantity']/.." position="replace">
+                <td t-if="display_rental" name="td_duration" class="text-right">
+                    <t t-if="line.number_of_days > 0 and int(line.rental_qty)">
+                        <span t-field="line.number_of_days"/>
+                        <span t-field="line.product_uom_id" groups="uom.group_uom"/>
+                    </t>
+                </td>
+                <td name="td_quantity" class="text-right">
+                    <t t-if="line.number_of_days == 0 and not line.rental_qty">
+                        <span t-field="line.quantity"/>
+                        <span t-field="line.product_uom_id" groups="uom.group_uom"/>
+                    </t>
+                    <t t-else="">
+                        <span t-field="line.rental_qty"/>
+                    </t>
+                </td>
+            </xpath>
+
+<!--            hide taxes columns and total in line not to included vat -->
+            <xpath expr="//th[@name='th_taxes']" position="replace"></xpath>
+            <xpath expr="//span[@id='line_tax_ids']/.." position="replace"></xpath>
+
+            <xpath expr="//span[@t-field='line.price_subtotal']/.." position="replace">
+                <td class="text-right o_price_total">
+                    <span class="text-nowrap" t-field="line.price_subtotal"/>
+                </td>
+            </xpath>
+
+
+        </template>
+    </data>
+</odoo>

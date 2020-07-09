@@ -131,6 +131,18 @@ class SaleOrderLine(models.Model):
         self.ensure_one()
         return {'start_order_line_id': self.id}
 
+    def _prepare_invoice_line(self):
+        """
+        Prepare the dict of values to create the new invoice line for a sales order line.
+
+        :param qty: float quantity to invoice
+        """
+        self.ensure_one()
+        res = super()._prepare_invoice_line()
+        if self.start_date and self.end_date:
+            res.update({"rental_qty": self.rental_qty})
+        return res
+
     def _prepare_new_rental_procurement_values(self, group=False):
         vals = {
             'group_id': group,
