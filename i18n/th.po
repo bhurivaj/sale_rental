@@ -1,597 +1,739 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * sale_rental
+# 	* sale_rental
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 10.0\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-08 00:50+0000\n"
-"PO-Revision-Date: 2017-07-08 00:50+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Thai (https://www.transifex.com/oca/teams/23907/th/)\n"
-"Language: th\n"
+"POT-Creation-Date: 2020-07-09 02:14+0000\n"
+"PO-Revision-Date: 2020-07-09 02:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: \n"
 
 #. module: sale_rental
-#: model:ir.model.fields,help:sale_rental.field_sale_rental_in_state
-#: model:ir.model.fields,help:sale_rental.field_sale_rental_out_state
-#: model:ir.model.fields,help:sale_rental.field_sale_rental_sell_state
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "&amp;nbsp;<span>on</span>&amp;nbsp;"
+msgstr ""
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "(spelling to text)"
+msgstr "(คำอ่านภาษาไทย)"
+
+#. module: sale_rental
+#: model:ir.model.fields,help:sale_rental.field_sale_rental__in_state
+#: model:ir.model.fields,help:sale_rental.field_sale_rental__out_state
+#: model:ir.model.fields,help:sale_rental.field_sale_rental__sell_state
 msgid ""
 "* New: When the stock move is created and not yet confirmed.\n"
-"* Waiting Another Move: This state can be seen when a move is waiting for "
-"another one, for example in a chained flow.\n"
-"* Waiting Availability: This state is reached when the procurement "
-"resolution is not straight forward. It may need the scheduler to run, a "
-"component to be manufactured...\n"
+"* Waiting Another Move: This state can be seen when a move is waiting for another one, for example in a chained flow.\n"
+"* Waiting Availability: This state is reached when the procurement resolution is not straight forward. It may need the scheduler to run, a component to be manufactured...\n"
 "* Available: When products are reserved, it is set to 'Available'.\n"
 "* Done: When the shipment is processed, the state is 'Done'."
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
-#: selection:sale.rental,state:0
-msgid "Back In"
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "/ Rental"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line_can_sell_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "<span>Pro-Forma Invoice # </span>"
+msgstr ""
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "<strong>Customer</strong>"
+msgstr "<strong>ลูกค้า</strong>"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "<strong>GTEE+Grand Total</strong>"
+msgstr "<strong>ยอดรวม ค้ำฯ + ชำระทั้งหมด</strong>"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "<strong>Guarantee Total</strong>"
+msgstr "<strong>ยอดรวม ค้ำฯ</strong>"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "<strong>Rental since:</strong>"
+msgstr "<strong>เช่าตั้งแต่:</strong>"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "<strong>Rental to:</strong>"
+msgstr "<strong>สิ้นสุดเมื่อ:</strong>"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "<strong>Salesperson</strong>"
+msgstr "<strong>พนักงานขาย</strong>"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>ยอดรวม</strong>"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "<strong>Total</strong>"
+msgstr "<strong>ทั้งหมด</strong>"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_sale_order__num_word
+msgid "Amount In Words:"
+msgstr "จำนวนเป็นคำอ่าน:"
+
+#. module: sale_rental
+#: model:ir.model.fields.selection,name:sale_rental.selection__sale_rental__state__in
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
+msgid "Back In"
+msgstr "กลับถึงเมื่อ"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line__can_sell_rental
 msgid "Can Sell from Rental"
 msgstr ""
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/stock.py:39
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__rental
+msgid "Can be Rent"
+msgstr "สามารถเช่าได้"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:sale_rental.product_template_only_form_view
+msgid "Can be Rental"
+msgstr "สามารถเป็นสินค้าเช่าได้"
+
+#. module: sale_rental
+#: code:addons/sale_rental/models/stock.py:0
 #, python-format
 msgid "Can't find any generic 'Rent' route."
 msgstr ""
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/stock.py:50
+#: code:addons/sale_rental/models/stock.py:0
 #, python-format
 msgid "Can't find any generic 'Sell Rented Product' route."
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.create_rental_product_form
+#: model_terms:ir.ui.view,arch_db:sale_rental.create_rental_product_form
 msgid "Cancel"
-msgstr ""
+msgstr "ยกเลิก"
 
 #. module: sale_rental
-#: selection:sale.rental,state:0
+#: model:ir.model.fields.selection,name:sale_rental.selection__sale_rental__state__cancel
 msgid "Cancelled"
-msgstr ""
+msgstr "ถูกยกเลิก"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/sale_order.py:34
+#: code:addons/sale_rental/models/sale_order.py:0
 #, python-format
 msgid "Cannot sell the rental %s because it has not been delivered"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_company_id
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__company_id
 msgid "Company"
 msgstr "บริษัท"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_copy_image
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__copy_image
 msgid "Copy Product Image"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.create_rental_product_form
+#: model_terms:ir.ui.view,arch_db:sale_rental.create_rental_product_form
 msgid "Create"
-msgstr ""
+msgstr "สร้าง"
 
 #. module: sale_rental
 #: model:ir.actions.act_window,name:sale_rental.create_rental_product_action
-#: model:ir.ui.view,arch_db:sale_rental.create_rental_product_form
-#: model:ir.ui.view,arch_db:sale_rental.product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:sale_rental.create_rental_product_form
+#: model_terms:ir.ui.view,arch_db:sale_rental.product_normal_form_view
 msgid "Create Rental Service"
 msgstr ""
 
 #. module: sale_rental
 #: model:ir.model,name:sale_rental.model_create_rental_product
 msgid "Create the Rental Service Product"
-msgstr ""
+msgstr "สร้าง บริการสินค้าให้เช่า"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_create_uid
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_create_uid
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__create_uid
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__create_uid
 msgid "Created by"
 msgstr "สร้างโดย"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_create_date
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_create_date
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__create_date
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__create_date
 msgid "Created on"
 msgstr "สร้างเมื่อ"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_partner_id
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__partner_id
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
 msgid "Customer"
 msgstr "ลูกค้า"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_default_code
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__default_code
 msgid "Default Code"
-msgstr ""
+msgstr "Code เบื้องต้น"
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_tree
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_form
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_tree
 msgid "Delivery"
 msgstr "การจัดส่ง"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_out_picking_id
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__out_picking_id
 msgid "Delivery Order"
-msgstr "ใบขนส่ง"
+msgstr "รายการจัดส่ง"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_display_name
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_display_name
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__display_name
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__display_name
 msgid "Display Name"
 msgstr "ชื่อที่ใช้แสดง"
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_tree
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "Duration"
+msgstr "ระยะเวลา"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__end_date
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_tree
 msgid "End Date"
-msgstr "สิ้นสุดเมื่อ"
+msgstr "วันสิ้นสุด"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_end_date
-msgid "End Date (extensions included)"
-msgstr "สิ้นสุดเมื่อ (รวมวันที่ต่อสัญญาแล้ว)"
-
-#. module: sale_rental
-#: model:ir.model.fields,help:sale_rental.field_sale_rental_end_date
+#: model:ir.model.fields,help:sale_rental.field_sale_rental__end_date
 msgid ""
-"End Date of the Rental, taking into account all the extensions sold to the "
-"customer."
+"End Date of the Rental (extensions included),         taking into account "
+"all the extensions sold to the customer."
 msgstr ""
+"วันที่สิ้นสุดของการเช่า (รวมส่วนการขยายระยะเวลาแล้ว) โดยคำนึงถึง "
+"ส่วนขยายทั้งหมดที่ขายให้กับลูกค้า"
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
+#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line__rental_guarantee_price
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "GTEE Price"
+msgstr "ราคาค้ำฯ"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "GTEE Total"
+msgstr "รวมค้ำฯ"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
 msgid "Group By"
 msgstr "จัดกลุ่มโดย"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_id
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_id
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__id
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__id
 msgid "ID"
 msgstr "รหัส"
 
 #. module: sale_rental
-#: model:ir.model.fields,help:sale_rental.field_sale_order_line_rental_qty
-#: model:ir.model.fields,help:sale_rental.field_sale_rental_rental_qty
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__in_state
+msgid "In Move State"
+msgstr "อยู่ในสถานะระหว่างย้าย"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__in_move_id
+msgid "Incoming Move"
+msgstr "กำลังย้ายเข้า"
+
+#. module: sale_rental
+#: model:ir.model.fields,help:sale_rental.field_account_move_line__rental_qty
+#: model:ir.model.fields,help:sale_rental.field_sale_order_line__rental_qty
+#: model:ir.model.fields,help:sale_rental.field_sale_rental__rental_qty
 msgid "Indicate the number of items that will be rented."
-msgstr ""
+msgstr "ระบุจำนวนรายการที่จะเช่า"
 
 #. module: sale_rental
 #: model:ir.model,name:sale_rental.model_stock_inventory
 msgid "Inventory"
-msgstr "คลังสินค้า"
+msgstr "สินค้าคงคลัง"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product___last_update
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental___last_update
+#: model_terms:ir.ui.view,arch_db:sale_rental.product_template_custom_filter_inherited
+msgid "Is not rental"
+msgstr "ไม่ใช่รายการสินค้าเช่า"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.product_template_custom_filter_inherited
+msgid "Is rental"
+msgstr "เป็นสินค้าเช่า"
+
+#. module: sale_rental
+#: model:ir.model,name:sale_rental.model_account_move_line
+msgid "Journal Item"
+msgstr "รายการสมุดบัญชีรายวัน"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product____last_update
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental____last_update
 msgid "Last Modified on"
 msgstr "แก้ไขครั้งสุดท้ายเมื่อ"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_write_uid
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_write_uid
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__write_uid
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__write_uid
 msgid "Last Updated by"
 msgstr "อัพเดทครั้งสุดท้ายโดย"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_write_date
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_write_date
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__write_date
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__write_date
 msgid "Last Updated on"
 msgstr "อัพเดทครั้งสุดท้ายเมื่อ"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/sale_order.py:68
+#: code:addons/sale_rental/models/sale_order.py:0
 #, python-format
 msgid ""
 "Missing 'Rental to Extend' on the sale order line with rental service %s"
 msgstr "รายการสินค้าไม่ได้เซ็ตเป็น 'ต่อค่าเช่า'"
 
 #. module: sale_rental
-#: selection:sale.order.line,rental_type:0
+#: model:ir.model.fields.selection,name:sale_rental.selection__sale_order_line__rental_type__new_rental
 msgid "New Rental"
 msgstr "รายการเช่าใหม่"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/sale_order.py:174
+#: code:addons/sale_rental/models/sale_order.py:0
 #, python-format
 msgid "Not enough stock !"
 msgstr "สต็อกสินค้าไม่เพียงพอ !"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/sale_order.py:84
+#: code:addons/sale_rental/models/sale_order.py:0
 #, python-format
 msgid ""
 "On the 'new rental' sale order line with product '%s', we should have a "
 "rental service product !"
 msgstr ""
+"ในบรรทัดคำสั่งขาย รายการสินค้าที่เป็น 'รายการเช่าใหม่' ชื่อ '%s' เราควรมี"
+"บริการสินค้าให้เช่า!"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/sale_order.py:101
+#: code:addons/sale_rental/models/sale_order.py:0
 #, python-format
 msgid ""
 "On the sale order line with product %s you are trying to sell a rented "
 "product with a quantity (%s) that is different from the rented quantity "
 "(%s). This is not supported."
 msgstr ""
+"กรุณาตรวจสอบ ในบรรทัดคำสั่งขาย รายการสินค้าที่ชื่อ %s คุณกำลังพยายามให้เช่า"
+"มีจำนวน (%s) ไม่เพียงพอต่อการให้เช่า"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/sale_order.py:90
+#: code:addons/sale_rental/models/sale_order.py:0
 #, python-format
 msgid ""
-"On the sale order line with product '%s' the Product Quantity (%s) should be "
-"the number of days (%s) multiplied by the Rental Quantity (%s)."
-msgstr "ข้อมูลในรายการสินค้าที่ชื่อ '%s' ปริมาณสินค้าควรจะเป็นค่าที่ได้จากการ จำนวนวัน x จำนวนที่เช่า"
+"On the sale order line with product '%s' the Product Quantity (%s) should be"
+" the number of days (%s) multiplied by the Rental Quantity (%s)."
+msgstr ""
+"ข้อมูลในรายการสินค้าที่ชื่อ '%s' ปริมาณสินค้าควรจะเป็นค่าที่ได้จากการ "
+"จำนวนวัน x จำนวนที่เช่า"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/sale_order.py:73
+#: code:addons/sale_rental/models/sale_order.py:0
 #, python-format
 msgid ""
 "On the sale order line with rental service %s, you are trying to extend a "
 "rental with a rental quantity (%s) that is different from the quantity of "
 "the original rental (%s). This is not supported."
 msgstr ""
+"กรุณาตรวจสอบ ในบรรทัดคำสั่งขายที่เป็นบริการเช่า %s ซึ่งคุณกำลังพยายามขยายระยะเวลาออกไปนั้น"
+"การเช่าที่มีปริมาณการเช่า (%s) ที่แตกต่างจากปริมาณของ"
+"การเช่าเดิม (%s)"
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
-#: selection:sale.rental,state:0
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "Order"
+msgstr ""
+
+#. module: sale_rental
+#: model:ir.model.fields.selection,name:sale_rental.selection__sale_rental__state__ordered
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
 msgid "Ordered"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
-#: selection:sale.rental,state:0
+#: model:ir.model.fields.selection,name:sale_rental.selection__sale_rental__state__out
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
 msgid "Out"
-msgstr ""
+msgstr "ส่งออก"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_out_move_id
-msgid "Outgoing Stock Move"
-msgstr "รายการเคลื่อนไหวสต๊อกขาออก"
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__out_state
+msgid "Out Move State"
+msgstr "อยู่ในสถานะส่งออก"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse_rental_view_location_id
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__out_move_id
+msgid "Outgoing Move"
+msgstr "อยู่ในระหว่างส่งออก"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse__rental_view_location_id
 msgid "Parent Rental"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model,name:sale_rental.model_procurement_order
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_procurement_id
-msgid "Procurement"
-msgstr "การจัดซื้อ"
-
-#. module: sale_rental
 #: model:ir.model,name:sale_rental.model_product_product
 msgid "Product"
-msgstr ""
+msgstr "สินค้า"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_categ_id
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__categ_id
 msgid "Product Category"
+msgstr "หมวดสินค้า"
+
+#. module: sale_rental
+#: model:ir.model,name:sale_rental.model_product_template
+msgid "Product Template"
+msgstr "รูปแบบสินค้า"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__hw_product_id
+msgid "Product to Rent"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_name
-msgid "Product Name"
-msgstr ""
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "Quotation"
+msgstr "ใบเสนอราคา"
 
 #. module: sale_rental
-#: model:ir.model,name:sale_rental.model_stock_location_path
-msgid "Pushed Flow"
-msgstr ""
-
-#. module: sale_rental
-#: code:addons/sale_rental/wizard/create_rental_product.py:30
+#: code:addons/sale_rental/wizard/create_rental_product.py:0
 #, python-format
 msgid "RENT-%s"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_delivery_carrier_rental_service_ids
-#: model:ir.model.fields,field_description:sale_rental.field_product_product_rental_service_ids
-#: model:ir.ui.view,arch_db:sale_rental.product_normal_form_view
-msgid "Related Rental Services"
-msgstr ""
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__in_picking_id
+msgid "Receipt"
+msgstr "การรับ"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_delivery_carrier_rented_product_id
-#: model:ir.model.fields,field_description:sale_rental.field_product_product_rented_product_id
+#: model:ir.model.fields,field_description:sale_rental.field_product_product__rented_product_id
 msgid "Related Rented Product"
-msgstr ""
+msgstr "รายการสินค้าเช่าที่เชื่อมโยง"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/stock.py:36
+#: code:addons/sale_rental/models/stock.py:0
 #: model:stock.location.route,name:sale_rental.route_warehouse0_rental
 #, python-format
 msgid "Rent"
-msgstr ""
+msgstr "เช่า"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/stock.py:113
+#: code:addons/sale_rental/models/stock.py:0
 #: model:ir.model,name:sale_rental.model_sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line_rental
-#: model:ir.ui.view,arch_db:sale_rental.product_normal_form_view
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
+#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line__rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:sale_rental.product_template_only_form_view
+#: model_terms:ir.ui.view,arch_db:sale_rental.view_warehouse
 #, python-format
 msgid "Rental"
 msgstr "การเช่า"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse_rental_allowed
+#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse__rental_allowed
 msgid "Rental Allowed"
+msgstr "การเช่าที่อนุญาต"
+
+#. module: sale_rental
+#: model:ir.model.fields.selection,name:sale_rental.selection__sale_order_line__rental_type__rental_extension
+msgid "Rental Extension"
+msgstr "ต่อเช่า"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__extension_order_line_ids
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_form
+msgid "Rental Extensions"
+msgstr "ต่อเช่าหลายรายการ"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__rental_guarantee_price
+#: model:ir.model.fields,field_description:sale_rental.field_product_product__rental_guarantee_price
+#: model:ir.model.fields,field_description:sale_rental.field_product_template__rental_guarantee_price
+msgid "Rental Guarantee Price"
+msgstr "ราคาค้ำประกัน"
+
+#. module: sale_rental
+#: code:addons/sale_rental/models/stock.py:0
+#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse__rental_in_location_id
+#, python-format
+msgid "Rental In"
 msgstr ""
 
 #. module: sale_rental
-#: selection:sale.order.line,rental_type:0
-msgid "Rental Extension"
-msgstr "ต่อสัญญาเช่า"
-
-#. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_extension_order_line_ids
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
-msgid "Rental Extensions"
-msgstr "ต่อสัญญาเช่าหลายรายการ"
-
-#. module: sale_rental
-#: code:addons/sale_rental/models/stock.py:123
-#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse_rental_in_location_id
-#, python-format
-msgid "Rental In"
-msgstr "เช่า รับคืน"
-
-#. module: sale_rental
-#: code:addons/sale_rental/models/stock.py:133
-#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse_rental_out_location_id
+#: code:addons/sale_rental/models/stock.py:0
+#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse__rental_out_location_id
 #, python-format
 msgid "Rental Out"
-msgstr "เช่า ส่งมอบ"
+msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product_sale_price_per_day
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__sale_price_per_day
 msgid "Rental Price per Day"
 msgstr "ราคาเช่า/วัน"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line_rental_qty
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_rental_qty
+#: model:ir.model.fields,field_description:sale_rental.field_account_move_line__rental_qty
+#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line__rental_qty
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__rental_qty
 msgid "Rental Quantity"
-msgstr "จำนวนที่เช่า"
+msgstr "จำนวนเช่า"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse_rental_route_id
+#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse__rental_route_id
 msgid "Rental Route"
-msgstr ""
+msgstr "เส้นทางการเช่า"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_start_order_id
-msgid "Rental Sale Order"
-msgstr ""
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__start_order_id
+msgid "Rental SO"
+msgstr "SO ใบเช่า"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_start_order_line_id
-msgid "Rental Sale Order Line"
-msgstr ""
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__start_order_line_id
+msgid "Rental SO Line"
+msgstr "บรรทัด SO ใบเช่า"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_rental_product_id
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__rental_product_id
 msgid "Rental Service"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line_rental_type
-msgid "Rental Type"
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__name
+msgid "Rental Service Name"
 msgstr ""
 
 #. module: sale_rental
-#: code:addons/sale_rental/wizard/create_rental_product.py:21
+#: model:ir.model.fields,field_description:sale_rental.field_product_product__rental_service_ids
+#: model_terms:ir.ui.view,arch_db:sale_rental.product_normal_form_view
+msgid "Rental Services"
+msgstr ""
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line__rental_type
+msgid "Rental Type"
+msgstr "ประเภทการเช่า"
+
+#. module: sale_rental
+#: code:addons/sale_rental/wizard/create_rental_product.py:0
 #, python-format
 msgid "Rental of a %s"
-msgstr ""
+msgstr "รายการเช่าของ %s"
 
 #. module: sale_rental
-#: model:product.product,name:sale_rental.rent_product_product_25
-#: model:product.template,name:sale_rental.rent_product_product_25_product_template
-msgid "Rental of one Laptop E5023"
-msgstr ""
-
-#. module: sale_rental
-#: model:product.product,name:sale_rental.rent_product_product_8
-#: model:product.template,name:sale_rental.rent_product_product_8_product_template
-msgid "Rental of one iMac"
-msgstr ""
-
-#. module: sale_rental
-#: model:product.product,name:sale_rental.rent_product_product_6
-#: model:product.template,name:sale_rental.rent_product_product_6_product_template
-msgid "Rental of one iPad Mini"
-msgstr ""
-
-#. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line_extension_rental_id
+#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line__extension_rental_id
 msgid "Rental to Extend"
-msgstr ""
+msgstr "รายการต่อเช่า"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line_sell_rental_id
+#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line__sell_rental_id
 msgid "Rental to Sell"
-msgstr ""
+msgstr "รายการเช่าตัดจำหน่าย"
 
 #. module: sale_rental
 #: model:ir.actions.act_window,name:sale_rental.sale_rental_action
 #: model:ir.ui.menu,name:sale_rental.sale_rental_menu
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_tree
 msgid "Rentals"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_rented_product_id
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__rented_product_id
 msgid "Rented Product"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_tree
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_form
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_tree
 msgid "Return"
-msgstr ""
-
-#. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_in_picking_id
-msgid "Return Picking"
-msgstr ""
-
-#. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_in_move_id
-msgid "Return Stock Move"
-msgstr ""
+msgstr "ส่งคืน"
 
 #. module: sale_rental
 #: model:ir.model,name:sale_rental.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "ใบสั่งขาย"
 
 #. module: sale_rental
 #: model:ir.model,name:sale_rental.model_sale_order_line
 msgid "Sales Order Line"
+msgstr "รายการคำสั่งขาย"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_form
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_tree
+msgid "Sales Rentals"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
 msgid "Search Rentals"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_sell_picking_id
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__sell_picking_id
 msgid "Sell Delivery Order"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_sell_procurement_id
-msgid "Sell Procurement"
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__sell_state
+msgid "Sell Move State"
 msgstr ""
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/stock.py:45
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_sell_order_line_ids
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
+#: code:addons/sale_rental/models/stock.py:0
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__sell_order_line_ids
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_form
 #: model:stock.location.route,name:sale_rental.route_warehouse0_sell_rented_product
 #, python-format
 msgid "Sell Rented Product"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse_sell_rented_product_route_id
+#: model:ir.model.fields,field_description:sale_rental.field_stock_warehouse__sell_rented_product_route_id
 msgid "Sell Rented Product Route"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_sell_move_id
-msgid "Sell Stock Move"
-msgstr ""
-
-#. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
-#: selection:sale.rental,state:0
+#: model:ir.model.fields.selection,name:sale_rental.selection__sale_rental__state__sell_progress
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
 msgid "Sell in progress"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
-#: selection:sale.rental,state:0
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__sell_move_id
+msgid "Selling Move"
+msgstr ""
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_form
+msgid "Selling Order Line"
+msgstr ""
+
+#. module: sale_rental
+#: model:ir.model.fields.selection,name:sale_rental.selection__sale_rental__state__sold
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
 msgid "Sold"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_start_date
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__start_date
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
 msgid "Start Date"
-msgstr ""
+msgstr "วันที่เริ่ม"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_state
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_search
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental__state
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_search
 msgid "State"
+msgstr "สถานะ"
+
+#. module: sale_rental
+#: model:ir.model,name:sale_rental.model_stock_rule
+msgid "Stock Rule"
 msgstr ""
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_out_state
-msgid "State of the Outgoing Stock Move"
-msgstr ""
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "Taxes"
+msgstr "ภาษี"
 
 #. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_in_state
-msgid "State of the Return Stock Move"
-msgstr ""
-
-#. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental_sell_state
-msgid "State of the Sell Stock Move"
-msgstr ""
-
-#. module: sale_rental
-#: code:addons/sale_rental/models/stock.py:54
+#: code:addons/sale_rental/models/stock.py:0
 #, python-format
 msgid "The Rental Input stock location is not set on the warehouse %s"
 msgstr ""
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/stock.py:58
+#: code:addons/sale_rental/models/stock.py:0
 #, python-format
 msgid "The Rental Output stock location is not set on the warehouse %s"
 msgstr ""
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/sale_order.py:217
+#: code:addons/sale_rental/models/sale_order.py:0
 #, python-format
 msgid ""
 "The Rental Service of the Rental Extension you just selected is '%s' and "
 "it's not the same as the Product currently selected in this Sale Order Line."
 msgstr ""
+"รายการส่วนขยายการเช่าที่คุณเพิ่งเลือก '%s'"
+"รายการสินค้านี้ไม่เหมือนกับรายการสินค้าที่เลือกไว้ในรายการสั่งซื้อในปัจจุบัน"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/product.py:27
+#: code:addons/sale_rental/models/product.py:0
 #, python-format
 msgid "The rental product '%s' must be of type 'Service'."
-msgstr ""
+msgstr "รายการสินค้าเช่าชื่อ '%s' ต้องเป็นประเภท'บริการ'"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/product.py:31
+#: code:addons/sale_rental/models/product.py:0
 #, python-format
 msgid ""
-"The rental product '%s' must have the option 'Must Have Start and End Dates' "
-"checked."
-msgstr "รายการสินค้าเช่าชื่อ '%s' จะต้องเลือกช่อง 'กำหนดให้มีวันเริ่มต้นและลิ้นสุดด้วย'"
+"The rental product '%s' must have the option 'Must Have Start and End Dates'"
+" checked."
+msgstr ""
+"รายการสินค้าเช่าชื่อ '%s' จะต้องเลือก"
+"'Must Have Start and End Dates' ('ให้ระบุวันที่เริ่มและสิ้นสุดด้วย')"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/product.py:39
+#: model:ir.model.constraint,message:sale_rental.constraint_sale_order_line_rental_qty_positive
+msgid "The rental quantity must be positive or null."
+msgstr "จำนวนเช่าต้องเป็นค่าไม่ติดลบ หรือไม่ก็เว้นว่างไว้ เท่านั้น"
+
+#. module: sale_rental
+#: code:addons/sale_rental/models/product.py:0
 #, python-format
 msgid "The unit of measure of the rental product '%s' must be Time date type."
-msgstr "หน่วยวัดต้องเป็นประเภทหน่วยวัดประเภท วันและเวลา เท่านั้น"
+msgstr "หน่วยนับของรายการสินค้าเช่าชื่อ '%s' ต้องเป็นหน่วยนับประเภทวันและเวลาเท่านั้น"
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_form
 msgid "Total"
 msgstr "รวม"
 
 #. module: sale_rental
-#: model:ir.ui.view,arch_db:sale_rental.sale_rental_form
+#: model:ir.model.fields,field_description:sale_rental.field_sale_order_line__rental_guarantee_price_total
+msgid "Total GTEE"
+msgstr "รวมค้ำฯ"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_sale_order__rental_guarantee_price_total
+msgid "Total Rental Guarantee"
+msgstr "รวมค้ำประกัน"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_form
 msgid "Unit of Measure"
-msgstr "หน่วยนับ"
+msgstr "หน่วยวัด"
 
 #. module: sale_rental
 #: model:ir.model,name:sale_rental.model_stock_warehouse
@@ -599,33 +741,43 @@ msgid "Warehouse"
 msgstr "คลังสินค้า"
 
 #. module: sale_rental
-#: code:addons/sale_rental/models/sale_order.py:175
+#: code:addons/sale_rental/models/sale_order.py:0
 #, python-format
 msgid ""
 "You want to rent %.2f %s but you only have %.2f %s currently available on "
-"the stock location '%s' ! Make sure that you get some units back in the mean "
-"time or re-supply the stock location '%s'."
+"the stock location '%s' ! Make sure that you get some units back in the mean"
+" time or re-supply the stock location '%s'."
 msgstr ""
-#"คุณต้องการเช่าสินค้าจำนวน %.2f %s แต่คุณมีอยู่ในคลัง '%s' แค่ %.2f %s ! "
-#"ตรวจสอบว่าคุณได้ทำการคีย์รายการหรือนำสินค้ากลับเข้า stock บ้างแล้ว "
-#"หรือได้ทำการเติมสินค้าในคลังสินค้า  '%s' แล้ว"
+"คุณต้องการเช่า %.2f %s แต่คุณมีของคงเหลือเพียง %.2f %s ที่พอปล่อยได้เท่านั้น"
+"โปรดตรวจสอบสต็อคที่คลังสินค้า '%s'! อีกครั้งและเพื่อให้แน่ใจว่าคุณจะมีรายการสินค้าเช่าเพียงพอต่อการบริการลูกค้า"
+"กรุณาเช็ควันที่รับคืน หรือ re-Supply สินค้าเพิ่มที่ คลัง '%s'"
 
 #. module: sale_rental
-#: view:sale.order.line:sale.view_order_line_tree
-msgid "GTEE Price"
-msgstr "ราคาค้ำประกัน"
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "transfered"
+msgstr "จ่าย"
 
 #. module: sale_rental
-#: view:sale.order.line:sale.view_order_line_tree
-msgid "Total GTEE"
-msgstr "ราคารวมค้ำประกัน"
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "amount"
+msgstr "ยอด"
 
 #. module: sale_rental
-#: model:ir.ui.view,name:	product.template.search
-msgid "Is rental"
-msgstr "เป็นสินค้าเช่า"
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "recieved"
+msgstr "รับ"
 
 #. module: sale_rental
-#: model:ir.ui.view,name:	product.template.search
-msgid "Is not rental"
-msgstr "ไม่ได้เป็นสินค้าเช่า"
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "date"
+msgstr "วันที่"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "sign here"
+msgstr "เซ็นต์ที่นี่"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "signature for recieved and transfer guarantee transactions"
+msgstr "เซ็นต์รับ-คืนค้ำประกัน"

@@ -81,4 +81,34 @@
     </field>
 </record>
 
+<!--    quotation template line-->
+<!--<record id="sale_rental.order_template_view_form_inherited" model="ir.ui.view">-->
+<!--    <field name="name">sale_rental.order_template_view_form_inherited</field>-->
+<!--    <field name="model">sale.order.template</field>-->
+<!--    <field name="inherit_id" ref="sale_management.sale_order_template_view_form" />-->
+<!--    <field name="arch" type="xml">-->
+<!--        <xpath expr="//tree[@name='Quotation Template Lines']/field[@name='name']" position="after">-->
+<!--            <field name="rental" invisible="1"/>-->
+<!--            <field name="can_sell_rental" invisible="1"/>-->
+<!--            <field name="rental_type"-->
+<!--                attrs="{'invisible': [('rental', '=', False)], 'required': [('rental', '=', True)]}"/>-->
+<!--            <field name="extension_rental_id"-->
+<!--                options="{'no_quick_create': True, 'no_create_edit': True}"-->
+<!--                attrs="{'invisible': [('rental_type', '!=', 'rental_extension')], 'required': [('rental_type', '=', 'rental_extension')]}"-->
+<!--                domain="[('rental_product_id', '=', product_id), ('state', 'in', ('ordered', 'out'))]" />-->
+<!--            <field name="sell_rental_id"-->
+<!--                options="{'no_quick_create': True, 'no_create_edit': True}"-->
+<!--                attrs="{'invisible': [('can_sell_rental', '=', False)]}"-->
+<!--                domain="[('rented_product_id', '=', product_id), ('state', '=', 'out')]"/>-->
+<!--        </xpath>-->
+<!--        <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">-->
+<!--            <field name="rental_qty" attrs="{'invisible': [('rental', '=', False)], 'required': [('rental', '=', True)]}"/>-->
+<!--        </xpath>-->
+<!--        <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="after">-->
+<!--            <field name="rental_guarantee_price" readonly="0"/>-->
+<!--            <field name="rental_guarantee_price_total"/>-->
+<!--        </xpath>-->
+<!--    </field>-->
+<!--</record>-->
+
 </odoo>

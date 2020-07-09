@@ -95,7 +95,7 @@
                 <div id="total" class="row" name="total">
                     <div class="col-8 text-center">
                       <h5 t-field="doc.num_word"/>
-                      <p class="subtitle">(คำอ่านภาษาไทย)</p>
+                      <p class="subtitle">(spelling to text)</p>
                     </div>
                     <div class="col-4">
                         <table class="table table-sm">
@@ -162,22 +162,22 @@
                     <div class="col-6">
                         <div class="row mt8" t-if="doc.default_start_date != 'null' and doc.default_end_date != 'null' and doc.rental_guarantee_price_total > 0">
                             <div class="col-12">
-                                <h4>เซ็นต์รับ-คืนค้ำประกัน</h4>
+                                <h4>signature for recieved and transfer guarantee transactions</h4>
                                 <table class="table table-sm table-bordered">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">วันที่</th>
-                                            <th class="text-center">ยอด</th>
-                                            <th class="text-center">เซ็นต์</th>
+                                            <th class="text-center">date</th>
+                                            <th class="text-center">amount</th>
+                                            <th class="text-center">sign here</th>
                                         </tr>
                                         <tbody>
                                             <tr>
-                                                <td class="bg-light text-dark">รับ</td>
+                                                <td class="bg-light text-dark">recieved</td>
                                                 <td rowspan="2" class="text-right"><span t-field="doc.rental_guarantee_price_total"></span></td>
                                                 <td class="bg-light text-dark"></td>
                                             </tr>
                                             <tr>
-                                                <td class="text-dark bg-light">จ่าย</td>
+                                                <td class="text-dark bg-light">transfered</td>
                                                 <td class="text-dark bg-light"></td>
                                             </tr>
                                         </tbody>
