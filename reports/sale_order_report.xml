@@ -93,11 +93,11 @@
             <!--     block for baht text and Total-->
             <xpath expr="//div[@name='total']" position="replace">
                 <div id="total" class="row" name="total">
-                    <div class="col-8 text-center">
+                    <div class="col-6 text-center">
                       <h5 t-field="doc.num_word"/>
                       <p class="subtitle">(spelling to text)</p>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         <table class="table table-sm">
                             <tr class="border-black o_subtotal" style="">
                                 <td name="td_amount_untaxed_label"><strong>Subtotal</strong></td>
@@ -141,7 +141,7 @@
                                     <span t-field="doc.rental_guarantee_price_total"/>
                                 </td>
                             </tr>
-                            <tr t-if="doc.rental_guarantee_price_total > 0" class="border-black o_grand_total">
+                            <tr t-if="doc.rental_guarantee_price_total > 0" class="border-black o_total">
                                 <td name="td_grand_total_label"><strong>GTEE+Grand Total</strong></td>
                                 <td name="td_grand_total" class="text-right">
                                     <strong t-esc="doc.amount_total + doc.rental_guarantee_price_total" t-options="{'widget': 'monetary', 'display_currency': doc.currency_id}" />
@@ -154,50 +154,57 @@
 
 <!-- restructure of signed block and note -->
             <xpath expr="//p[@t-field='doc.note']" position="replace"/>
+            <xpath expr="//p[@t-if='doc.payment_term_id.note']" position="replace"/>
             <xpath expr="//div[@name='signature']" position="replace">
                 <div class="row mt64">
                     <div class="col-6">
-                        <p style="font-size: 8px;" t-field="doc.note" />
+                        <p t-if="doc.payment_term_id.note">
+                            <span t-field="doc.payment_term_id.note"/>
+                        </p>
+                        <h4>Description note</h4>
+                        <p style="font-size: 10px;" t-field="doc.note" />
                     </div>
                     <div class="col-6">
                         <div class="row mt8" t-if="doc.default_start_date != 'null' and doc.default_end_date != 'null' and doc.rental_guarantee_price_total > 0">
                             <div class="col-12">
-                                <h4>signature for recieved and transfer guarantee transactions</h4>
+                                <h4>signature for accepted recieved and transfer guarantee and stock transactions</h4>
                                 <table class="table table-sm table-bordered">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">date</th>
+                                            <th class="text-center">lists</th>
+                                            <th class="text-center">paid date</th>
+                                            <th class="text-center">stock movement date</th>
                                             <th class="text-center">amount</th>
                                             <th class="text-center">sign here</th>
                                         </tr>
-                                        <tbody>
-                                            <tr>
-                                                <td class="bg-light text-dark">recieved</td>
-                                                <td rowspan="2" class="text-right"><span t-field="doc.rental_guarantee_price_total"></span></td>
-                                                <td class="bg-light text-dark"></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-dark bg-light">transfered</td>
-                                                <td class="text-dark bg-light"></td>
-                                            </tr>
-                                        </tbody>
                                     </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="bg-light text-dark" style="border-left: 1px solid; border-right: 1px solid;">recieved</td>
+                                            <td class="bg-light text-center text-dark"> ___/____/______</td>
+                                            <td class="bg-light text-center text-dark"> ___/____/______</td>
+                                            <td rowspan="2" class="text-right"><span t-field="doc.rental_guarantee_price_total"></span></td>
+                                            <td class="bg-light text-dark"></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-dark bg-light" style="border-left: 1px solid; border-right: 1px solid;">transfered</td>
+                                            <td class="text-dark text-center bg-light"> ___/____/______</td>
+                                            <td class="text-dark text-center bg-light"> ___/____/______</td>
+                                            <td class="text-dark bg-light"></td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div t-if="doc.signed_by" class="mt64 ml64 mr4" name="signature">
-                            <div class="offset-3">
-                                <strong>Salesperson</strong>
-                            </div>
+                        <div class="mt64 ml64 mr4" name="signature">
                             <div class="offset-3 text-center border border-left-0 border-right-0 border-bottom-0">
                                 <p t-field="doc.user_id"/>
+                                <strong>Salesperson</strong>
                             </div>
                             <br />
-                            <div class="offset-3">
-                                <strong>Customer</strong>
-                            </div>
                             <div class="offset-3 text-center border border-left-0 border-right-0 border-bottom-0">
                                 <p t-field="doc.signed_by"/>
+                                <strong>Customer who have approved authorities</strong>
                             </div>
                         </div>
                     </div>

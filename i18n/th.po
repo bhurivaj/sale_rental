@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 02:14+0000\n"
-"PO-Revision-Date: 2020-07-09 02:14+0000\n"
+"POT-Creation-Date: 2020-07-17 04:23+0000\n"
+"PO-Revision-Date: 2020-07-17 04:23+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
 msgid "/ Rental"
-msgstr ""
+msgstr "/ ระบบเช่า"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
@@ -49,8 +49,8 @@ msgstr ""
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
-msgid "<strong>Customer</strong>"
-msgstr "<strong>ลูกค้า</strong>"
+msgid "<strong>Customer who have approved authorities</strong>"
+msgstr "<strong>ผู้มีอำนาจลงนามสั่งซื้อ</strong>"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
@@ -204,12 +204,18 @@ msgid "Delivery Order"
 msgstr "รายการจัดส่ง"
 
 #. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "Description note"
+msgstr "รายละเอียด"
+
+#. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_create_rental_product__display_name
 #: model:ir.model.fields,field_description:sale_rental.field_sale_rental__display_name
 msgid "Display Name"
 msgstr "ชื่อที่ใช้แสดง"
 
 #. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_invoice_document_inherited
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
 msgid "Duration"
 msgstr "ระยะเวลา"
@@ -288,6 +294,12 @@ msgstr "เป็นสินค้าเช่า"
 #: model:ir.model,name:sale_rental.model_account_move_line
 msgid "Journal Item"
 msgstr "รายการสมุดบัญชีรายวัน"
+
+#. module: sale_rental
+#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product____last_update
+#: model:ir.model.fields,field_description:sale_rental.field_sale_rental____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_create_rental_product____last_update
@@ -434,7 +446,7 @@ msgstr ""
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_sale_rental__in_picking_id
 msgid "Receipt"
-msgstr "การรับ"
+msgstr "ใบเสร็จ"
 
 #. module: sale_rental
 #: model:ir.model.fields,field_description:sale_rental.field_product_product__rented_product_id
@@ -685,8 +697,8 @@ msgid ""
 "The Rental Service of the Rental Extension you just selected is '%s' and "
 "it's not the same as the Product currently selected in this Sale Order Line."
 msgstr ""
-"รายการส่วนขยายการเช่าที่คุณเพิ่งเลือก '%s'"
-"รายการสินค้านี้ไม่เหมือนกับรายการสินค้าที่เลือกไว้ในรายการสั่งซื้อในปัจจุบัน"
+"รายการส่วนขยายการเช่าที่คุณเพิ่งเลือก "
+"'%s'รายการสินค้านี้ไม่เหมือนกับรายการสินค้าที่เลือกไว้ในรายการสั่งซื้อในปัจจุบัน"
 
 #. module: sale_rental
 #: code:addons/sale_rental/models/product.py:0
@@ -701,8 +713,8 @@ msgid ""
 "The rental product '%s' must have the option 'Must Have Start and End Dates'"
 " checked."
 msgstr ""
-"รายการสินค้าเช่าชื่อ '%s' จะต้องเลือก"
-"'Must Have Start and End Dates' ('ให้ระบุวันที่เริ่มและสิ้นสุดด้วย')"
+"รายการสินค้าเช่าชื่อ '%s' จะต้องเลือก'Must Have Start and End Dates' "
+"('ให้ระบุวันที่เริ่มและสิ้นสุดด้วย')"
 
 #. module: sale_rental
 #: model:ir.model.constraint,message:sale_rental.constraint_sale_order_line_rental_qty_positive
@@ -748,14 +760,15 @@ msgid ""
 "the stock location '%s' ! Make sure that you get some units back in the mean"
 " time or re-supply the stock location '%s'."
 msgstr ""
-"คุณต้องการเช่า %.2f %s แต่คุณมีของคงเหลือเพียง %.2f %s ที่พอปล่อยได้เท่านั้น"
-"โปรดตรวจสอบสต็อคที่คลังสินค้า '%s'! อีกครั้งและเพื่อให้แน่ใจว่าคุณจะมีรายการสินค้าเช่าเพียงพอต่อการบริการลูกค้า"
-"กรุณาเช็ควันที่รับคืน หรือ re-Supply สินค้าเพิ่มที่ คลัง '%s'"
+"คุณต้องการเช่า %.2f %s แต่คุณมีของคงเหลือเพียง %.2f %s "
+"ที่พอปล่อยได้เท่านั้นโปรดตรวจสอบสต็อคที่คลังสินค้า '%s'! "
+"อีกครั้งและเพื่อให้แน่ใจว่าคุณจะมีรายการสินค้าเช่าเพียงพอต่อการบริการลูกค้ากรุณาเช็ควันที่รับคืน"
+" หรือ re-Supply สินค้าเพิ่มที่ คลัง '%s'"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
-msgid "transfered"
-msgstr "จ่าย"
+msgid "___/____/______"
+msgstr ""
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
@@ -764,13 +777,18 @@ msgstr "ยอด"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
-msgid "recieved"
-msgstr "รับ"
+msgid "lists"
+msgstr "รายการ"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
-msgid "date"
-msgstr "วันที่"
+msgid "paid date"
+msgstr "วันชำระ"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "recieved"
+msgstr "รับ"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
@@ -779,5 +797,17 @@ msgstr "เซ็นต์ที่นี่"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
-msgid "signature for recieved and transfer guarantee transactions"
-msgstr "เซ็นต์รับ-คืนค้ำประกัน"
+msgid ""
+"signature for accepted recieved and transfer guarantee and stock "
+"transactions"
+msgstr "เซ็นต์รับ-คืนค้ำประกัน และ สินค้า"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "stock movement date"
+msgstr "วันที่รับคืนสินค้า"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "transfered"
+msgstr "โอนย้าย"
