@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 04:23+0000\n"
-"PO-Revision-Date: 2020-07-17 04:23+0000\n"
+"POT-Creation-Date: 2020-07-17 10:00+0000\n"
+"PO-Revision-Date: 2020-07-17 10:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
 msgid "/ Rental"
-msgstr "/ ระบบเช่า"
+msgstr "/ ใบเช่า"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
@@ -299,12 +299,6 @@ msgstr "รายการสมุดบัญชีรายวัน"
 #: model:ir.model.fields,field_description:sale_rental.field_create_rental_product____last_update
 #: model:ir.model.fields,field_description:sale_rental.field_sale_rental____last_update
 msgid "Last Modified on"
-msgstr ""
-
-#. module: sale_rental
-#: model:ir.model.fields,field_description:sale_rental.field_create_rental_product____last_update
-#: model:ir.model.fields,field_description:sale_rental.field_sale_rental____last_update
-msgid "Last Modified on"
 msgstr "แก้ไขครั้งสุดท้ายเมื่อ"
 
 #. module: sale_rental
@@ -344,8 +338,8 @@ msgid ""
 "On the 'new rental' sale order line with product '%s', we should have a "
 "rental service product !"
 msgstr ""
-"ในบรรทัดคำสั่งขาย รายการสินค้าที่เป็น 'รายการเช่าใหม่' ชื่อ '%s' เราควรมี"
-"บริการสินค้าให้เช่า!"
+"ในบรรทัดคำสั่งขาย รายการสินค้าที่เป็น 'รายการเช่าใหม่' ชื่อ '%s' "
+"เราควรมีบริการสินค้าให้เช่า!"
 
 #. module: sale_rental
 #: code:addons/sale_rental/models/sale_order.py:0
@@ -355,8 +349,8 @@ msgid ""
 "product with a quantity (%s) that is different from the rented quantity "
 "(%s). This is not supported."
 msgstr ""
-"กรุณาตรวจสอบ ในบรรทัดคำสั่งขาย รายการสินค้าที่ชื่อ %s คุณกำลังพยายามให้เช่า"
-"มีจำนวน (%s) ไม่เพียงพอต่อการให้เช่า"
+"กรุณาตรวจสอบ ในบรรทัดคำสั่งขาย รายการสินค้าที่ชื่อ %s "
+"คุณกำลังพยายามให้เช่ามีจำนวน (%s) ไม่เพียงพอต่อการให้เช่า"
 
 #. module: sale_rental
 #: code:addons/sale_rental/models/sale_order.py:0
@@ -376,9 +370,9 @@ msgid ""
 "rental with a rental quantity (%s) that is different from the quantity of "
 "the original rental (%s). This is not supported."
 msgstr ""
-"กรุณาตรวจสอบ ในบรรทัดคำสั่งขายที่เป็นบริการเช่า %s ซึ่งคุณกำลังพยายามขยายระยะเวลาออกไปนั้น"
-"การเช่าที่มีปริมาณการเช่า (%s) ที่แตกต่างจากปริมาณของ"
-"การเช่าเดิม (%s)"
+"กรุณาตรวจสอบ ในบรรทัดคำสั่งขายที่เป็นบริการเช่า %s "
+"ซึ่งคุณกำลังพยายามขยายระยะเวลาออกไปนั้นการเช่าที่มีปริมาณการเช่า (%s) "
+"ที่แตกต่างจากปริมาณของการเช่าเดิม (%s)"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
@@ -725,7 +719,9 @@ msgstr "จำนวนเช่าต้องเป็นค่าไม่ต
 #: code:addons/sale_rental/models/product.py:0
 #, python-format
 msgid "The unit of measure of the rental product '%s' must be Time date type."
-msgstr "หน่วยนับของรายการสินค้าเช่าชื่อ '%s' ต้องเป็นหน่วยนับประเภทวันและเวลาเท่านั้น"
+msgstr ""
+"หน่วยนับของรายการสินค้าเช่าชื่อ '%s' "
+"ต้องเป็นหน่วยนับประเภทวันและเวลาเท่านั้น"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.sale_rental_form
@@ -777,6 +773,11 @@ msgstr "ยอด"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
+msgid "delivered<br/>___/____/______"
+msgstr "ส่งมอบ<br/>___/____/______"
+
+#. module: sale_rental
+#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
 msgid "lists"
 msgstr "รายการ"
 
@@ -787,8 +788,8 @@ msgstr "วันชำระ"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
-msgid "recieved"
-msgstr "รับ"
+msgid "recieved<br/>___/____/______"
+msgstr "ได้รับ<br/>___/____/______"
 
 #. module: sale_rental
 #: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
@@ -801,13 +802,3 @@ msgid ""
 "signature for accepted recieved and transfer guarantee and stock "
 "transactions"
 msgstr "เซ็นต์รับ-คืนค้ำประกัน และ สินค้า"
-
-#. module: sale_rental
-#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
-msgid "stock movement date"
-msgstr "วันที่รับคืนสินค้า"
-
-#. module: sale_rental
-#: model_terms:ir.ui.view,arch_db:sale_rental.report_saleorder_document_inherit
-msgid "transfered"
-msgstr "โอนย้าย"

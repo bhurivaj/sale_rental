@@ -7,8 +7,8 @@
             <xpath expr="//h2[@class='mt16']" position="replace">
                 <h2 class="mt16">
                     <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
-                        <span t-if="doc.state not in ['draft','sent']">Order <span t-if="doc.default_start_date != 'null' and doc.default_end_date != 'null'">/ Rental</span> # </span>
-                        <span t-if="doc.state in ['draft','sent']">Quotation <span t-if="doc.default_start_date != 'null' and doc.default_end_date != 'null'">/ Rental</span> # </span>
+                        <span t-if="doc.state not in ['draft','sent']">Order <span t-if="doc.default_start_date and doc.default_end_date">/ Rental</span> # </span>
+                        <span t-if="doc.state in ['draft','sent']">Quotation <span t-if="doc.default_start_date and doc.default_end_date">/ Rental</span> # </span>
                     </t>
                     <t t-if="env.context.get('proforma', False) or is_pro_forma">
                         <span>Pro-Forma Invoice # </span>
@@ -157,14 +157,14 @@
             <xpath expr="//p[@t-if='doc.payment_term_id.note']" position="replace"/>
             <xpath expr="//div[@name='signature']" position="replace">
                 <div class="row mt64">
-                    <div class="col-6">
+                    <div class="col-5">
                         <p t-if="doc.payment_term_id.note">
                             <span t-field="doc.payment_term_id.note"/>
                         </p>
                         <h4>Description note</h4>
                         <p style="font-size: 10px;" t-field="doc.note" />
                     </div>
-                    <div class="col-6">
+                    <div class="col-7">
                         <div class="row mt8" t-if="doc.default_start_date != 'null' and doc.default_end_date != 'null' and doc.rental_guarantee_price_total > 0">
                             <div class="col-12">
                                 <h4>signature for accepted recieved and transfer guarantee and stock transactions</h4>
@@ -173,23 +173,21 @@
                                         <tr>
                                             <th class="text-center">lists</th>
                                             <th class="text-center">paid date</th>
-                                            <th class="text-center">stock movement date</th>
                                             <th class="text-center">amount</th>
                                             <th class="text-center">sign here</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="bg-light text-dark" style="border-left: 1px solid; border-right: 1px solid;">recieved</td>
+                                            <td class="bg-light text-dark" style="border-left: 1px solid; border-right: 1px solid;">recieved<br />___/____/______</td>
                                             <td class="bg-light text-center text-dark"> ___/____/______</td>
-                                            <td class="bg-light text-center text-dark"> ___/____/______</td>
-                                            <td rowspan="2" class="text-right"><span t-field="doc.rental_guarantee_price_total"></span></td>
+                                            <td class="bg-light" width="20%"></td>
                                             <td class="bg-light text-dark"></td>
                                         </tr>
                                         <tr>
-                                            <td class="text-dark bg-light" style="border-left: 1px solid; border-right: 1px solid;">transfered</td>
+                                            <td class="text-dark bg-light" style="border-left: 1px solid; border-right: 1px solid;">delivered<br />___/____/______</td>
                                             <td class="text-dark text-center bg-light"> ___/____/______</td>
-                                            <td class="text-dark text-center bg-light"> ___/____/______</td>
+                                            <td class="bg-light" width="20%"></td>
                                             <td class="text-dark bg-light"></td>
                                         </tr>
                                     </tbody>
@@ -198,13 +196,18 @@
                         </div>
                         <div class="mt64 ml64 mr4" name="signature">
                             <div class="offset-3 text-center border border-left-0 border-right-0 border-bottom-0">
-                                <p t-field="doc.user_id"/>
-                                <strong>Salesperson</strong>
+                                <p>
+                                    <span t-field="doc.user_id"/>
+                                    <strong>Salesperson</strong>
+                                </p>
                             </div>
                             <br />
+                            <br />
                             <div class="offset-3 text-center border border-left-0 border-right-0 border-bottom-0">
-                                <p t-field="doc.signed_by"/>
+                                <p>
+                                    <span t-field="doc.signed_by"/>
                                 <strong>Customer who have approved authorities</strong>
+                                </p>
                             </div>
                         </div>
                     </div>

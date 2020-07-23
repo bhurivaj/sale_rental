@@ -115,7 +115,7 @@ class SaleOrderLine(models.Model):
                         line.rental_guarantee_price))
                 # the module sale_start_end_dates checks that, when we have
                 # must_have_dates, we have start + end dates
-            elif line.sell_rental_id:
+            elif line.sell_rental_id and line.product_uom_qty != line.sell_rental_id.rental_qty:
                 if line.product_uom_qty != line.sell_rental_id.rental_qty:
                     raise ValidationError(_(
                         "On the sale order line with product %s "
@@ -159,9 +159,9 @@ class SaleOrderLine(models.Model):
         errors = []
         procurements = []
         for line in self:
-            if (
-                    line.rental_type == 'new_rental' and
-                    line.product_id.rented_product_id):
+            if (line.rental_type == 'new_rental' and line.product_id.rented_product_id):
+
+                # create procurement group
                 group = line.order_id.procurement_group_id
                 if not group:
                     group = self.env['procurement.group'].create({
@@ -174,16 +174,15 @@ class SaleOrderLine(models.Model):
 
                 vals = line._prepare_new_rental_procurement_values(group)
                 try:
-                    procurements.append(self.env['procurement.group'].Procurement(
+                    self.env['procurement.group'].run([self.env['procurement.group'].Procurement(
                         line.product_id.rented_product_id, line.rental_qty,
                         line.product_id.rented_product_id.uom_id,
                         line.order_id.warehouse_id.rental_out_location_id,
-                        line.name, line.order_id.name,line.order_id.company_id, vals))
-                    if procurements:
-                        self.env['procurement.group'].run(procurements)
+                        line.name, line.order_id.name,line.order_id.company_id, vals)])
                 except UserError as error:
                     errors.append(error.name)
 
+                # create sale rental
                 self.env['sale.rental'].create(line._prepare_rental())
 
             elif (
@@ -214,7 +213,7 @@ class SaleOrderLine(models.Model):
 
     def _prepare_procurement_values(self, group_id=False):
         """
-            Overriding this function to changethe route
+            Overriding this function to change the route
             on selling rental product
         """
         vals = super(SaleOrderLine, self)._prepare_procurement_values(group_id)
