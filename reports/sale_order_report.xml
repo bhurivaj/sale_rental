@@ -75,7 +75,10 @@
                 </td>
             </xpath>
 
-            <xpath expr="//td[@name='td_subtotal']" position="after">
+            <xpath expr="//td[@name='td_subtotal']" position="replace">
+                <td name="td_subtotal" class="text-right o_price_total">
+                    <span t-field="line.price_subtotal" />
+                </td>
                 <td t-if="display_rental" name="td_guarantee_price_total" class="text-right">
                     <span t-if="display_rental" t-field="line.rental_guarantee_price_total"/>
                 </td>

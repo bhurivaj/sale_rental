@@ -5,7 +5,7 @@
 
 {
     'name': 'Sale Rental',
-    'version': '13.0.1.2.0.1',
+    'version': '13.0.1.2.0.4',
     'category': 'Sales',
     'license': 'AGPL-3',
     'summary': 'Manage Rental of Products',
