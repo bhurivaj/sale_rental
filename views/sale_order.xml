@@ -68,8 +68,7 @@
                 domain="[('rental_product_id', '=', product_id), ('state', 'in', ('ordered', 'out'))]" />
             <field name="sell_rental_id"
                 options="{'no_quick_create': True, 'no_create_edit': True}"
-                attrs="{'invisible': [('can_sell_rental', '=', False)]}"
-                domain="[('rented_product_id', '=', product_id), ('state', '=', 'out')]"/>
+                attrs="{'invisible': [('can_sell_rental', '=', False)]}"/>
         </xpath>
         <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
             <field name="rental_qty" attrs="{'invisible': [('rental', '=', False)], 'required': [('rental', '=', True)]}"/>

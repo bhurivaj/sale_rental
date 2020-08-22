@@ -95,8 +95,7 @@ class SaleOrderLine(models.Model):
                         % (
                         line.product_id.name,
                         line.rental_qty,
-                        line.extension_rental_id.rental_qty,
-                        line.rental_guarantee_price,))
+                        line.extension_rental_id.rental_qty,))
             if line.rental_type in ('new_rental', 'rental_extension'):
                 if not line.product_id.rented_product_id:
                     raise ValidationError(_(
@@ -111,8 +110,7 @@ class SaleOrderLine(models.Model):
                         "number of days (%s) "
                         "multiplied by the Rental Quantity (%s).") % (
                         line.product_id.name, line.product_uom_qty,
-                        line.number_of_days, line.rental_qty,
-                        line.rental_guarantee_price))
+                        line.number_of_days, line.rental_qty))
                 # the module sale_start_end_dates checks that, when we have
                 # must_have_dates, we have start + end dates
             elif line.sell_rental_id and line.product_uom_qty != line.sell_rental_id.rental_qty:
@@ -124,8 +122,7 @@ class SaleOrderLine(models.Model):
                         "quantity (%s). This is not supported.") % (
                         line.product_id.name,
                         line.product_uom_qty,
-                        line.sell_rental_id.rental_qty,
-                        line.rental_guarantee_price))
+                        line.sell_rental_id.rental_qty))
 
     def _prepare_rental(self):
         self.ensure_one()
@@ -324,3 +321,21 @@ class SaleOrderLine(models.Model):
             self.extension_rental_id = False
         else:
             return {'domain': {'extension_rental_id': [('partner_id', '=', self.order_id.partner_id.id), ('rental_product_id', '=', self.product_id.id)]}}
+
+    @api.onchange('rental_type')
+    def rental_type_change(self):
+        """
+        If rental_type field on sale order line was changed the extension_rental_id field will enable to edit.
+        on extension_rental_id are filtering by partner_id and rental_product_id.
+        """
+        if self.rental_type == 'new_rental':
+            self.extension_rental_id = False
+        else:
+            return {'domain': {'extension_rental_id': [('partner_id', '=', self.order_id.partner_id.id), ('rental_product_id', '=', self.product_id.id)]}}
+
+    @api.onchange('product_id')
+    def filter_rental_to_sell(self):
+        res = {}
+        if self.product_id:
+            if self.product_id.rented_product_id:
+                return {'domain': {'sell_rental_id': [('partner_id', '=', self.order_id.partner_id.id), ('rental_product_id', '=', self.product_id.id),('state', '=', 'out')]}}

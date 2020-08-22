@@ -41,17 +41,23 @@ class SaleRental(models.Model):
             out_move = False
             sell_move = False
             state = False
+
             if rental.start_order_line_id:
                 for move in rental.start_order_line_id.move_ids:
+                    # set variable from stock move state
                     if move.state != 'cancel':
-                        out_move = move
-                    if move.move_dest_ids:
-                        out_move = move
-                        in_move = move.move_dest_ids[0]
+                        if move.picking_code == 'outgoing':
+                            out_move = move
+                            in_move = move.move_dest_ids[0]
+                        if move.picking_code == 'incoming':
+                            out_move = move.move_orig_ids[0]
+                            in_move = move
+                # check if sell_move
                 if rental.sell_order_line_ids and\
                         rental.sell_order_line_ids[0].move_ids:
                     sell_move = rental.sell_order_line_ids[0].move_ids[-1]
                 state = 'ordered'
+                # check if this item are back in or on selling process
                 if out_move and out_move.state == 'done':
                     state = 'out'
                     if in_move:
@@ -67,8 +73,10 @@ class SaleRental(models.Model):
                             state = 'sold'
                         elif sell_move.state == 'cancel':
                             state = 'out'
+
                 if rental.start_order_line_id.state == 'cancel':
                     state = 'cancel'
+
             rental.in_move_id = in_move
             rental.out_move_id = out_move
             rental.state = state
