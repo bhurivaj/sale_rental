@@ -76,11 +76,17 @@
     </field>
 </record>
 
+<!--    sale rental table-->
 <record id="sale_rental_tree" model="ir.ui.view">
     <field name="name">sale.rental.tree</field>
     <field name="model">sale.rental</field>
     <field name="arch" type="xml">
-        <tree string="Sales Rentals" create="false" edit="false" decoration-danger="state == 'ordered'" decoration-success="state == 'in'">
+        <tree string="Sales Rentals" create="false" edit="false"
+            decoration-primary="state == 'ordered'"
+            decoration-info="state == 'out'"
+            decoration-muted="state == 'cancel'"
+            decoration-it="state == 'sell_progress'"
+            decoration-success="state == 'in'">
             <field name="start_order_id"/>
             <field name="partner_id"/>
             <field name="rented_product_id"/>
@@ -94,6 +100,7 @@
     </field>
 </record>
 
+<!--    sale rental search columns -->
 <record id="sale_rental_search" model="ir.ui.view">
     <field name="name">sale.rental.search</field>
     <field name="model">sale.rental</field>
@@ -110,6 +117,8 @@
             <filter name="sold" string="Sold" domain="[('state', '=', 'sold')]"/>
             <filter name="in" string="Back In" domain="[('state', '=', 'in')]"/>
             <group string="Group By" name="groupby">
+                <filter name="so_groupby" string="Sale Order"
+                    context="{'group_by': 'start_order_id'}"/>
                 <filter name="partner_groupby" string="Customer"
                     context="{'group_by': 'partner_id'}"/>
                 <filter name="state_groupby" string="State"
@@ -123,6 +132,7 @@
     </field>
 </record>
 
+<!--    sale rental pivot -->
 <record id="sale_rental_pivot" model="ir.ui.view">
     <field name="name">sale.rental.pivot</field>
     <field name="model">sale.rental</field>
@@ -135,13 +145,11 @@
     </field>
 </record>
 
-
-
-
 <record id="sale_rental_action" model="ir.actions.act_window">
     <field name="name">Rentals</field>
     <field name="res_model">sale.rental</field>
     <field name="view_mode">tree,form,pivot</field>
+    <field name="context">{"search_default_so_groupby":1}</field>
 </record>
 
 <menuitem id="sale_rental_menu" parent="sale.sale_order_menu"
