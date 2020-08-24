@@ -321,21 +321,3 @@ class SaleOrderLine(models.Model):
             self.extension_rental_id = False
         else:
             return {'domain': {'extension_rental_id': [('partner_id', '=', self.order_id.partner_id.id), ('rental_product_id', '=', self.product_id.id)]}}
-
-    @api.onchange('rental_type')
-    def rental_type_change(self):
-        """
-        If rental_type field on sale order line was changed the extension_rental_id field will enable to edit.
-        on extension_rental_id are filtering by partner_id and rental_product_id.
-        """
-        if self.rental_type == 'new_rental':
-            self.extension_rental_id = False
-        else:
-            return {'domain': {'extension_rental_id': [('partner_id', '=', self.order_id.partner_id.id), ('rental_product_id', '=', self.product_id.id)]}}
-
-    @api.onchange('product_id')
-    def filter_rental_to_sell(self):
-        res = {}
-        if self.product_id:
-            if self.product_id.rented_product_id:
-                return {'domain': {'sell_rental_id': [('partner_id', '=', self.order_id.partner_id.id), ('rental_product_id', '=', self.product_id.id),('state', '=', 'out')]}}

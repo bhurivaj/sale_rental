@@ -80,7 +80,7 @@
     <field name="name">sale.rental.tree</field>
     <field name="model">sale.rental</field>
     <field name="arch" type="xml">
-        <tree string="Sales Rentals" create="false" edit="false" decoration-danger="state &lt;= 'ordered'" decoration-success="state &lt;= 'in'">
+        <tree string="Sales Rentals" create="false" edit="false" decoration-danger="state == 'ordered'" decoration-success="state == 'in'">
             <field name="start_order_id"/>
             <field name="partner_id"/>
             <field name="rented_product_id"/>
