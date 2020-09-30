@@ -7,8 +7,8 @@
             <xpath expr="//h2[@class='mt16']" position="replace">
                 <h2 class="mt16">
                     <t t-if="not (env.context.get('proforma', False) or is_pro_forma)">
-                        <span t-if="doc.state not in ['draft','sent']">Order <span t-if="doc.default_start_date and doc.default_end_date">/ Rental</span> # </span>
-                        <span t-if="doc.state in ['draft','sent']">Quotation <span t-if="doc.default_start_date and doc.default_end_date">/ Rental</span> # </span>
+                        <span t-if="doc.state not in ['draft','sent']">Order <span t-if="doc.default_start_date and doc.default_end_date">/ Rental</span> <span t-if="any([l.rental_type == 'rental_extension' for l in doc.order_line])">(Extended)</span> # </span>
+                        <span t-if="doc.state in ['draft','sent']">Quotation <span t-if="doc.default_start_date and doc.default_end_date">/ Rental</span> <span t-if="any([l.rental_type == 'rental_extension' for l in doc.order_line])">(Extended)</span> # </span>
                     </t>
                     <t t-if="env.context.get('proforma', False) or is_pro_forma">
                         <span>Pro-Forma Invoice # </span>
