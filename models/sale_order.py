@@ -40,10 +40,17 @@ class SaleOrder(models.Model):
     @api.depends('order_line.rental_qty','order_line.rental_guarantee_price')
     def _compute_total(self):
         guarantee_total = 0.00
-        for line in self.order_line:
-            guarantee_total += line.rental_guarantee_price * line.rental_qty
+        """
+        check if any line of sale_order_line are 'new_rental'
+        """
+        if any(line['rental_type'] == 'new_rental' for line in self.order_line):
+            for line in self.order_line:
+                guarantee_total += line.rental_guarantee_price * line.rental_qty
+            self.rental_guarantee_price_total = guarantee_total
+        else:
+            self.rental_guarantee_price_total = 0
 
-        self.rental_guarantee_price_total = guarantee_total
+        print(self.rental_guarantee_price_total)
 
     def _compute_amount_in_word(self):
         for rec in self:
@@ -320,4 +327,4 @@ class SaleOrderLine(models.Model):
         if self.rental_type == 'new_rental':
             self.extension_rental_id = False
         else:
-            return {'domain': {'extension_rental_id': [('partner_id', '=', self.order_id.partner_id.id), ('rental_product_id', '=', self.product_id.id)]}}
+            return {'domain': {'extension_rental_id': [('partner_id', '=', self.order_id.partner_id.id),('rental_product_id', '=', self.product_id.id)]}}
